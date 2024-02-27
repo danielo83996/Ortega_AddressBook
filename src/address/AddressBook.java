@@ -9,13 +9,20 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.Scanner;
 import java.util.Vector;
-public class AddressBook {
-    //creates list to store entries
-    Vector<AdressEntry> adressEntryList = new Vector<AdressEntry>();
 
-    //function to print list
+/**
+ * creates list to store, find, add, readfiles, and remove entries
+ */
+public class AddressBook {
+    /**
+     * creates list to store the entries
+     */
+    Vector<AdressEntry> adressEntryList = new Vector<AdressEntry>();
+    /**
+     *function to print list
+     * allows us to go through our contact list and sort them by last name
+     */
     public void list(){
-        /*allows us to go through our contact list and sort them by last name*/
         adressEntryList.sort(new Comparator<AdressEntry>() {
             @Override
             public int compare(AdressEntry o1, AdressEntry o2) {
@@ -27,15 +34,21 @@ public class AddressBook {
             System.out.println((entry+1) + ": " +adressEntryList.get(entry));
         }
     }
-
-    //adds contact to list
+    /**
+     *adds contact to list
+     * @param newEntry adds the entry provided to the vector holding the contacts of the addressbook
+     */
     public void add(AdressEntry newEntry){
         adressEntryList.add(newEntry);
     }
-    /*takes in the parameter containg the name of the file then creates a new AddressEntry
-     , and then goes through each line of the file and adds them to their
-     apporoprate variable. Once it has assinged allvars then it is then added to the book, if
-     the file does not exist in the directory then it tells the user so*/
+
+    /**
+     *takes in the parameter containg the name of the file then creates a new AddressEntry
+     *, and then goes through each line of the file and adds them to their
+     *apporoprate variable. Once it has assinged allvars then it is then added to the book, if
+     *the file does not exist in the directory then it tells the user so
+     * @param entriesFile contains the name of the file which can hold any size of contact info
+     */
     public void readFromFile(String entriesFile){
         String read;
         try(BufferedReader file = new BufferedReader(new FileReader(entriesFile))){
@@ -55,10 +68,13 @@ public class AddressBook {
             System.out.println("Error opening file");
         }
     }
-    /*traverses through the book and shows the user which address match the lastname given, once the
-    * names are found it stores those entries on a tempearray list, andasks the user to choose one
-    *  of the entries to delete. After an entry is chosen it then creates a asks the user to confirm
-    * their choice and traversers through the actual list to remove it from our addressbook*/
+    /**
+     *traverses through the book and shows the user which address match the lastname given, once the
+     * names are found it stores those entries on a tempearray list, andasks the user to choose one
+     * of the entries to delete. After an entry is chosen it then creates a asks the user to confirm
+     * their choice and traversers through the actual list to remove it from our addressbook
+     * @param removeLastName is the string containing the name in which the user may want to remove
+     */
     public void remove(String removeLastName){
         int outputCounter = 0;
         Vector<AdressEntry> tempList = new Vector<AdressEntry>();
@@ -92,7 +108,10 @@ public class AddressBook {
             }
         }
     }
-    /*goes through our addressbook and only shows the entries in which match what the user inputed*/
+    /**
+     *goes through our addressbook and only shows the entries in which match what the user inputed
+     * @param findLastName user input of what last name they want to find
+     */
     public void find(String findLastName){
         int counter = 1;
         System.out.println("The following entries were found in the address book for a last name with \""+findLastName+"\"");

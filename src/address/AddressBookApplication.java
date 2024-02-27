@@ -1,27 +1,33 @@
 package address;
-/* allows for user input*/
 import java.util.Scanner;
 
-class AddressBookApplication {
+/**
+ * creats are addressbook and then calls other methods to read user input
+ */
 
+class AddressBookApplication {
+    /**
+     *creates instance of addresbook
+     * @param args creates main function
+     */
     public static void main(String args[]) {
-        /*creates instance of addresbook*/
     AddressBook ab = new AddressBook();
     initAddressBookExercise(ab);
 
     }
 
+    /**
+     *initializes choice that the user will make
+     * determines what choice the user will make
+     * a- will get the input and send it to readfromfile to add the contacts in the book
+     * b- input will prompt user for all info then call to add to book
+     * c- asks user for last name then calls remove to remove the name
+     * d- like c gets last name then calls find to look through the list to see name(s) that match
+     * e- prints the addressbook
+     * @param ab is the adressbook we will use to store entries
+     */
     public static void initAddressBookExercise(AddressBook ab){
-        /*initializes choice that the user will make*/
         String choice = "";
-        /*determines what choice the user will make
-        * a- will get the input and send it to readfromfile to add the contacts
-        * in the book
-        * b- input will prompt user for all info then call add to add to book
-        * c- asks user for last name then calls remove to remove the name
-        * d- like c gets last name then calls find to look through the list to see name(s)
-        * that match
-        * e- prints the addressbook*/
         while(!choice.equalsIgnoreCase("F")){
             System.out.println(Menu.displayMenu());
             Scanner input = new Scanner(System.in);
@@ -65,7 +71,6 @@ class AddressBookApplication {
                 ab.list();
             }
         }
-        /*program terminates*/
         System.out.println("Quitting.");
 
 
