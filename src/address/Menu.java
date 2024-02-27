@@ -1,50 +1,75 @@
 package address;
+import java.util.Scanner;
+
 public class Menu {
+    private static Scanner input = new Scanner(System.in);
+    private static String choiceStr = "";
 
-
-    /**
-     * prompt for First Name
-     * @return the First Name entered in by the user, if nothing entered in will use default
-     */
+    /*displays menu options*/
+    public static String displayMenu(){
+        return  "*************************\n"+
+                "Please enter your menu selection\n" +
+                "a) Loading From File\n" +
+                "b) Addition\n" +
+                "c) Removal\n" +
+                "d) Find\n" +
+                "e) Listing\n" +
+                "f) Quit\n" +
+                "*************************";
+    }
+    /*asks user for first name and takes in user input*/
     public static String prompt_FirstName(){
         System.out.println("First Name: ");
-
-        //for now return a default first name
-        return "Jane";
+        choiceStr = input.nextLine();
+        return choiceStr;
     }
+    /*asks user for last name and takes in user input*/
 
     public static String prompt_LastName(){
         System.out.println("Last Name: ");
-        return "maine";
+        choiceStr = input.nextLine();
+        return choiceStr;
     }
+    /*asks user for street and takes in user input*/
 
     public static String prompt_Street(){
         System.out.println("Street: ");
-        return "random street";
+        choiceStr = input.nextLine();
+        return choiceStr;
     }
+    /*asks user for city and takes in user input*/
 
     public static String prompt_City(){
         System.out.println("City: ");
-        return "random city";
+        choiceStr = input.nextLine();
+        return choiceStr;
     }
+    /*asks user for state and takes in user input*/
 
     public static String prompt_State(){
         System.out.println("State: ") ;
-        return "random state";
+        choiceStr = input.nextLine();
+        return choiceStr;
     }
+    /*asks user for zip code and takes in user input*/
 
     public static int prompt_Zip(){
-        System.out.println("Zip: ");
-        return 94678;
+        System.out.println("Zip: ") ;
+        choiceStr = input.nextLine();
+        return Integer.parseInt(choiceStr);
     }
+    /*asks user for phone number and takes in user input*/
 
     public static String prompt_Telephone(){
         System.out.println("Telephone: ");
-        return "random number";
+        choiceStr = input.nextLine();
+        return choiceStr;
     }
+    /*asks user for email and takes in user input*/
 
     public static String prompt_Email(){
         System.out.println("Email: ");
-        return "random email";
+        choiceStr = input.nextLine();
+        return choiceStr;
     }
 }

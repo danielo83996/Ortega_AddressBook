@@ -1,24 +1,73 @@
 package address;
+/* allows for user input*/
+import java.util.Scanner;
+
 class AddressBookApplication {
 
     public static void main(String args[]) {
-    //cerate instacne of addressbook
+        /*creates instance of addresbook*/
     AddressBook ab = new AddressBook();
     initAddressBookExercise(ab);
 
     }
 
-    //adds address to the addressbook
     public static void initAddressBookExercise(AddressBook ab){
-        AdressEntry contact1 = new AdressEntry();
-        AdressEntry contact2 = new AdressEntry("jack", "black","21 jump","Gotham","New York", 9457, "911", "nah@gmail.com");
+        /*initializes choice that the user will make*/
+        String choice = "";
+        /*determines what choice the user will make
+        * a- will get the input and send it to readfromfile to add the contacts
+        * in the book
+        * b- input will prompt user for all info then call add to add to book
+        * c- asks user for last name then calls remove to remove the name
+        * d- like c gets last name then calls find to look through the list to see name(s)
+        * that match
+        * e- prints the addressbook*/
+        while(!choice.equalsIgnoreCase("F")){
+            System.out.println(Menu.displayMenu());
+            Scanner input = new Scanner(System.in);
+            choice = input.nextLine();
+            if(choice.equalsIgnoreCase("A")){
+                System.out.println("\nEnter in FileName:");
+                input = new Scanner(System.in);
+                String fileName = input.nextLine();
+                ab.readFromFile(fileName);
+            }
+            if(choice.equalsIgnoreCase("B")){
 
-        contact1.setFirstName("daniel");
+                String firstName = Menu.prompt_FirstName();
+                String lastName = Menu.prompt_LastName();
+                String street = Menu.prompt_Street();
+                String city = Menu.prompt_City();
+                String state = Menu.prompt_State();
+                int zip = Menu.prompt_Zip();
+                String email = Menu.prompt_Email();
+                String phone = Menu.prompt_Telephone();
 
-        ab.add(contact1);
-        ab.add(contact2);
-        //outputs the contacts
-        ab.list();
+                AdressEntry contact = new AdressEntry(firstName,lastName,street,city,state,zip,email,phone);
+                ab.add(contact);
+            }
+            if(choice.equalsIgnoreCase("C")){
+                System.out.println("Enter in Last Name of contact to remove");
+                input = new Scanner(System.in);
+                String lastName = input.nextLine();
+                ab.remove(lastName);
+
+            }
+            if(choice.equalsIgnoreCase("D")){
+                System.out.println("Enter in all or beginning of last name you wish to find:");
+                input = new Scanner(System.in);
+                String lastName = input.nextLine();
+                ab.find(lastName);
+
+
+            }
+            if(choice.equalsIgnoreCase("E")){
+                ab.list();
+            }
+        }
+        /*program terminates*/
+        System.out.println("Quitting.");
+
 
     }
 
